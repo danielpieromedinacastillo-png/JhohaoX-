@@ -2,13 +2,100 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Mi primera página</title>
+  <title>Jhohao Aim</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body style="background:black; color:white; text-align:center;">
 
-  <h1>Bienvenido</h1>
-  <p>Esta es mi primera página web</p>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    .card {
+      background: #111;
+      width: 300px;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 0 20px #00ff99;
+    }
+
+    h2 {
+      text-align: center;
+      color: #00ff99;
+      margin-bottom: 15px;
+    }
+
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+    }
+
+    button {
+      background: #00ff99;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    label {
+      display: block;
+      margin-top: 8px;
+      font-size: 14px;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- LOGIN -->
+  <div id="login" class="card">
+    <h2>🔒 Login</h2>
+    <input type="password" id="password" placeholder="Ingresa la contraseña">
+    <button onclick="login()">Entrar</button>
+  </div>
+
+  <!-- MENU -->
+  <div id="menu" class="card hidden">
+    <h2>Jhohao Aim</h2>
+
+    <label><input type="checkbox"> Auxilio de mira</label>
+    <label><input type="checkbox"> Precisión alta</label>
+    <label><input type="checkbox"> FPS estable</label>
+    <label><input type="checkbox"> Modo freestyle</label>
+
+    <p style="margin-top:10px;">FOV</p>
+    <input type="range" min="60" max="120" value="90">
+
+    <button style="margin-top:15px;">ACTIVAR</button>
+  </div>
+
+  <script>const PASSWORD = "jhohao2026";
+    
+
+    function login() {
+      const pass = document.getElementById("password").value;
+
+      if (pass === PASSWORD) {
+        document.getElementById("login").classList.add("hidden");
+        document.getElementById("menu").classList.remove("hidden");
+      } else {
+        alert("Contraseña incorrecta");
+      }
+    }
+  </script>
 
 </body>
 </html>
