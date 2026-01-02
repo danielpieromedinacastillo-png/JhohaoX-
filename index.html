@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Jhohao Aim</title>
+<title>Jhohao Aim Trainer</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
@@ -16,6 +16,7 @@ body{
   align-items:center;
   height:100vh;
 }
+
 .card{
   background:#111;
   padding:20px;
@@ -24,7 +25,9 @@ body{
   box-shadow:0 0 20px #00ff99;
   text-align:center;
 }
+
 h2{color:#00ff99}
+
 input,button{
   width:100%;
   padding:10px;
@@ -32,11 +35,16 @@ input,button{
   border:none;
   border-radius:10px;
 }
+
 button{
   background:#00ff99;
   font-weight:bold;
 }
-.hidden{display:none}
+
+.hidden{
+  display:none;
+}
+
 #game{
   position:relative;
   width:100%;
@@ -45,6 +53,7 @@ button{
   margin-top:10px;
   overflow:hidden;
 }
+
 .target{
   position:absolute;
   width:26px;
@@ -57,16 +66,18 @@ button{
 
 <body>
 
+<!-- LOGIN -->
 <div id="login" class="card">
-  <h2>LOGIN</h2>
+  <h2>Jhohao Aim</h2>
   <input id="password" type="password" placeholder="Contraseña">
   <button onclick="entrar()">ENTRAR</button>
 </div>
 
+<!-- MENÚ -->
 <div id="menu" class="card hidden">
-  <h2>Jhohao Aim</h2>
+  <h2>Jhohao Aim Trainer</h2>
 
-  <p>🎯 Entrenamiento de mira</p>
+  <p>🎯 Entrena tu mira</p>
   <div id="game"></div>
   <p>Aciertos: <span id="score">0</span></p>
 
@@ -75,14 +86,13 @@ button{
 
 <script>
 const PASSWORD = "jhohao2026";
-  
 let score = 0;
 
 function entrar(){
   const pass = document.getElementById("password").value;
   if(pass === PASSWORD){
-    document.getElementById("login").style.display="none";
-    document.getElementById("menu").style.display="block";
+    document.getElementById("login").style.display = "none";
+    document.getElementById("menu").style.display = "block";
     spawn();
   } else {
     alert("Contraseña incorrecta");
@@ -90,43 +100,12 @@ function entrar(){
 }
 
 function spawn(){
-  const game =
-    button{
-  background:#00ff99;
-  font-weight:bold;
-}
-
-.hidden{
-  display:none;
-}
-</style>
-</head>
-
-<body>
-
-<div id="login" class="card">
-  <h2>LOGIN</h2>
-  <input id="password" type="password" placeholder="Contraseña">
-  <button onclick="entrar()">ENTRAR</button>
-</div>
-
-<div id="menu" class="card hidden">
-  <h2>MENÚ</h2>
-  <p>Login correcto ✅</p>
-</div>
-
-<script>
-function entrar(){
-  var pass = document.getElementById("password").value;
-
-  if(pass == "1234"){
-    document.getElementById("login").style.display = "none";
-    document.getElementById("menu").style.display = "block";
-  } else {
-    alert("Contraseña incorrecta");
-  }
-}
-</script>
-
-</body>
-</html>
+  const game = document.getElementById("game");
+  game.innerHTML = "";
+  const t = document.createElement("div");
+  t.className = "target";
+  t.style.left = Math.random() * (game.clientWidth - 26) + "px";
+  t.style.top = Math.random() * (game.clientHeight - 26) + "px";
+  t.onclick = () => {
+    sc
+    
