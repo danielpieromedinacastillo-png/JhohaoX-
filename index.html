@@ -1,101 +1,110 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Jhohao Aim</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Jhohao Aim Trainer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      background: #000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: Arial, sans-serif;
-      color: white;
-    }
-
-    .card {
-      background: #111;
-      width: 300px;
-      padding: 20px;
-      border-radius: 16px;
-      box-shadow: 0 0 20px #00ff99;
-    }
-
-    h2 {
-      text-align: center;
-      color: #00ff99;
-      margin-bottom: 15px;
-    }
-
-    input, button {
-      width: 100%;
-      padding: 10px;
-      margin-top: 10px;
-      border-radius: 10px;
-      border: none;
-      outline: none;
-    }
-
-    button {
-      background: #00ff99;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    label {
-      display: block;
-      margin-top: 8px;
-      font-size: 14px;
-    }
-
-    .hidden {
-      display: none;
-    }
-  </style>
+<style>
+body{
+  margin:0;
+  background:#000;
+  color:#fff;
+  font-family:Arial;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+}
+.card{
+  background:#111;
+  padding:20px;
+  border-radius:16px;
+  width:320px;
+  box-shadow:0 0 20px #00ff99;
+  text-align:center;
+}
+h2{color:#00ff99}
+button{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  border:none;
+  border-radius:12px;
+  background:#00ff99;
+  font-weight:bold;
+}
+#game{
+  position:relative;
+  width:100%;
+  height:200px;
+  border:2px solid #00ff99;
+  margin-top:15px;
+  overflow:hidden;
+}
+.target{
+  position:absolute;
+  width:30px;
+  height:30px;
+  background:red;
+  border-radius:50%;
+}
+.hidden{display:none}
+</style>
 </head>
 
 <body>
 
-  <!-- LOGIN -->
-  <div id="login" class="card">
-    <h2>🔒 Login</h2>
-    <input type="password" id="password" placeholder="Ingresa la contraseña">
-    <button onclick="login()">Entrar</button>
-  </div>
+<div id="login" class="card">
+  <h2>Login</h2>
+  <input id="pass" type="password" placeholder="Contraseña"
+    style="width:100%;padding:10px;border-radius:10px;border:none">
+  <button onclick="login()">Entrar</button>
+</div>
 
-  <!-- MENU -->
-  <div id="menu" class="card hidden">
-    <h2>Jhohao Aim</h2>
+<div id="menu" class="card hidden">
+  <h2>Jhohao Aim</h2>
 
-    <label><input type="checkbox"> Auxilio de mira</label>
-    <label><input type="checkbox"> Precisión alta</label>
-    <label><input type="checkbox"> FPS estable</label>
-    <label><input type="checkbox"> Modo freestyle</label>
+  <p>🎯 Entrena tu mira</p>
+  <div id="game"></div>
+  <p>Aciertos: <span id="score">0</span></p>
 
-    <p style="margin-top:10px;">FOV</p>
-    <input type="range" min="60" max="120" value="90">
+  <button onclick="openFF()">JUGAR FREE FIRE</button>
+</div>
 
-    <button style="margin-top:15px;">ACTIVAR</button>
-  </div>
+<script>
+const PASSWORD="jhohao2026";
+let score=0;
 
-  <script>const PASSWORD = "jhohao2026";
-    
+function login(){
+  if(document.getElementById("pass").value===PASSWORD){
+    loginDiv.style.display="none";
+    menu.style.display="block";
+    spawn();
+  } else alert("Contraseña incorrecta");
+}
 
-    function login() {
-      const pass = document.getElementById("password").value;
+function spawn(){
+  const game=document.getElementById("game");
+  game.innerHTML="";
+  const t=document.createElement("div");
+  t.className="target";
+  t.style.left=Math.random()*(game.clientWidth-30)+"px";
+  t.style.top=Math.random()*(game.clientHeight-30)+"px";
+  t.onclick=()=>{
+    score++;
+    document.getElementById("score").innerText=score;
+    spawn();
+  };
+  game.appendChild(t);
+}
 
-      if (pass === PASSWORD) {
-        document.getElementById("login").classList.add("hidden");
-        document.getElementById("menu").classList.remove("hidden");
-      } else {
-        alert("Contraseña incorrecta");
-      }
-    }
-  </script>
+// ABRIR FREE FIRE (Android)
+function openFF(){
+  window.location.href =
+  "intent://launch#Intent;package=com.dts.freefireth;end";
+}
+</script>
 
 </body>
 </html>
