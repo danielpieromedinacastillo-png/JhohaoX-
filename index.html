@@ -16,16 +16,15 @@ body{
   align-items:center;
   height:100vh;
 }
-
 .card{
   background:#111;
   padding:20px;
   border-radius:16px;
-  width:300px;
+  width:320px;
   box-shadow:0 0 20px #00ff99;
   text-align:center;
 }
-
+h2{color:#00ff99}
 input,button{
   width:100%;
   padding:10px;
@@ -33,8 +32,66 @@ input,button{
   border:none;
   border-radius:10px;
 }
-
 button{
+  background:#00ff99;
+  font-weight:bold;
+}
+.hidden{display:none}
+#game{
+  position:relative;
+  width:100%;
+  height:200px;
+  border:2px solid #00ff99;
+  margin-top:10px;
+  overflow:hidden;
+}
+.target{
+  position:absolute;
+  width:26px;
+  height:26px;
+  background:red;
+  border-radius:50%;
+}
+</style>
+</head>
+
+<body>
+
+<div id="login" class="card">
+  <h2>LOGIN</h2>
+  <input id="password" type="password" placeholder="Contraseña">
+  <button onclick="entrar()">ENTRAR</button>
+</div>
+
+<div id="menu" class="card hidden">
+  <h2>Jhohao Aim</h2>
+
+  <p>🎯 Entrenamiento de mira</p>
+  <div id="game"></div>
+  <p>Aciertos: <span id="score">0</span></p>
+
+  <button onclick="openFF()">JUGAR FREE FIRE MAX</button>
+</div>
+
+<script>
+const PASSWORD = "jhohao2026";
+  
+let score = 0;
+
+function entrar(){
+  const pass = document.getElementById("password").value;
+  if(pass === PASSWORD){
+    document.getElementById("login").style.display="none";
+    document.getElementById("menu").style.display="block";
+    spawn();
+  } else {
+    alert("Contraseña incorrecta");
+  }
+}
+
+function spawn(){
+  const game =
+    button{
   background:#00ff99;
   font-weight:bold;
 }
