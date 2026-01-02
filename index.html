@@ -1,34 +1,102 @@
-<script>
-const PASSWORD = "jhohao2026";
-
-function entrar(){
-  const pass = document.getElementById("password").value;
-  if(pass === PASSWORD){
-    document.getElementById("login").style.display="none";
-    document.getElementById("menu").style.display="block";
-  } else {
-    alert("Contraseña incorrecta");
-  }
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Beast_Store</title>
+<style>
+body {
+  background: radial-gradient(circle, #0a0a0a, #000);
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #fff;
 }
 
-function openFF(){
-  // Intent directo SIN Play Store
-  const ffMaxIntent =
-    "intent://launch/#Intent;" +
-    "scheme=android-app;" +
-    "package=com.dts.freefiremax;" +
-    "end";
-
-  window.location.href = ffMaxIntent;
-
-  // Mensaje por si Android bloquea
-  setTimeout(()=>{
-    alert(
-      "Si no se abrió el juego:\n" +
-      "• Asegúrate de tener Free Fire MAX instalado\n" +
-      "• Usa Google Chrome\n" +
-      "• Acepta el aviso de abrir app"
-    );
-  },1500);
+.panel {
+  width: 360px;
+  background: #111;
+  border-radius: 18px;
+  box-shadow: 0 0 25px #ff2b8a;
+  border: 2px solid #ff2b8a;
 }
-</script>
+
+.header {
+  text-align: center;
+  padding: 15px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #ff2b8a;
+}
+
+.section {
+  padding: 10px 20px;
+}
+
+.toggle {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.toggle input {
+  transform: scale(1.2);
+}
+
+.slider {
+  margin: 15px 0;
+}
+
+.slider label {
+  font-size: 14px;
+}
+
+.slider input {
+  width: 100%;
+}
+
+.activate {
+  background: linear-gradient(90deg, #ff2b8a, #ff005d);
+  border: none;
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  color: #fff;
+  border-radius: 0 0 16px 16px;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<div class="panel">
+  <div class="header">Beast_Store</div>
+
+  <div class="section">
+    <div class="toggle"><span>Assistente de Mira</span><input type="checkbox"></div>
+    <div class="toggle"><span>ESP</span><input type="checkbox"></div>
+    <div class="toggle"><span>Aimbot</span><input type="checkbox"></div>
+    <div class="toggle"><span>Norecoil</span><input type="checkbox"></div>
+    <div class="toggle"><span>Aimlock</span><input type="checkbox"></div>
+  </div>
+
+  <div class="section">
+    <div class="slider">
+      <label>AimFOV: <span id="fov">90</span></label>
+      <input type="range" min="0" max="100" value="90"
+        oninput="fov.innerText=this.value">
+    </div>
+
+    <div class="slider">
+      <label>Precisão: <span id="prec">50</span></label>
+      <input type="range" min="0" max="100" value="50"
+        oninput="prec.innerText=this.value">
+    </div>
+  </div>
+
+  <button class="activate">ATIVAR</button>
+</div>
+
+</body>
+</html>
